@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'country.dart';
 import 'country_list_theme_data.dart';
 import 'country_localizations.dart';
 import 'country_service.dart';
 import 'res/country_codes.dart';
-import 'utils.dart';
 
 class CountryListView extends StatefulWidget {
   /// Called when a country is select.
@@ -228,14 +228,14 @@ class _CountryListViewState extends State<CountryListView> {
     return SizedBox(
       // the conditional 50 prevents irregularities caused by the flags in RTL mode
       width: isRtl ? 50 : null,
-      child: Text(
-        country.iswWorldWide
-            ? '\uD83C\uDF0D'
-            : Utils.countryCodeToEmoji(country.countryCode),
-        style: TextStyle(
-          fontSize: widget.countryListTheme?.flagSize ?? 25,
-        ),
-      ),
+      child: country.iswWorldWide
+          ? Text(
+              '\uD83C\uDF0D',
+              style: TextStyle(
+                fontSize: widget.countryListTheme?.flagSize ?? 25,
+              ),
+            )
+          : SvgPicture.asset('assets/flags_svg/${country.countryCode}.svg'),
     );
   }
 

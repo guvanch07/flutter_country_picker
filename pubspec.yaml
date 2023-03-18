@@ -13,11 +13,15 @@ dependencies:
   collection: ^1.17.0
   flutter:
     sdk: flutter
+  flutter_svg: ^2.0.4
 
 
 flutter:
+  assets:
+    - assets/flags_svg
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   lint: ^1.8.2
+
